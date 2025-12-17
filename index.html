@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的世界纯净生存服务器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f0f8f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .top-banner {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .top-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .top-banner:hover img {
+            transform: scale(1.02);
+        }
+        
+        .head {
+            width: 100%;
+            padding: 2rem 1rem;
+            text-align: center;
+            background-color: #defffa;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .head::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" fill="%2362a87c" opacity="0.1"><rect width="2" height="2"/><rect x="2" y="2" width="2" height="2"/></svg>');
+            z-index: 0;
+        }
+        
+        .head h2 {
+            font-size: 2rem;
+            color: #2d6a4f;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .head h3 {
+            font-size: 1.2rem;
+            color: #62a87c;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .intr {
+            width: 100%;
+            padding: 2rem;
+            margin: 2rem auto;
+            border: 2px solid #62a87c;
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(98, 168, 124, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .intr:hover {
+            box-shadow: 0 6px 18px rgba(98, 168, 124, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .intr p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .pic {
+            width: 100%;
+            margin: 2rem auto;
+            border: 2px solid #62a87c;
+            border-radius: 12px;
+            background-color: white;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(98, 168, 124, 0.1);
+        }
+        
+        .center {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #2d6a4f;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .join-section {
+            text-align: center;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: #62a87c;
+            color: white;
+            border-radius: 12px;
+            max-width: 800px;
+            box-shadow: 0 4px 15px rgba(98, 168, 124, 0.3);
+        }
+        
+        .join-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .qq-group {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: white;
+            color: #62a87c;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .qq-group:hover {
+            background-color: #f0f8f5;
+            transform: scale(1.05);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .head h2 {
+                font-size: 1.5rem;
+            }
+            
+            .intr, .pic {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-banner">
+        <img src="主页.png" alt="我的世界服务器横幅">
+    </div>
+    
+    <div class="head">
+        <h2>我的世界服务器</h2>
+        <h3>纯净生存 | 建筑 | 生电</h3>
+    </div>
+    
+    <div class="container">
+        <div class="intr">
+            <p>&emsp;&emsp;这是一个Minecraft原汁原味纯生存服务器，核心玩法为建筑和生电。虽然目前每天在线人数不多，但我们正在努力扩大社区规模，欢迎各位玩家加入我们的大家庭，一起探索、建造和冒险！</p>
+        </div>
+        
+        <div class="pic">
+            <p class="center">服务器精彩瞬间</p>
+            <div class="gallery">
+                <img src="图库/1.png" alt="服务器截图1">
+                <img src="图库/2.png" alt="服务器截图2">
+                <img src="图库/3.png" alt="服务器截图3">
+                <img src="图库/4.png" alt="服务器截图4">
+                <img src="图库/5.png" alt="服务器截图5">
+                <img src="图库/6.png" alt="服务器截图6">
+                <img src="图库/7.png" alt="服务器截图7">
+                <img src="图库/8.png" alt="服务器截图8">
+                <img src="图库/9.png" alt="服务器截图9">
+                <img src="图库/10.png" alt="服务器截图10">
+            </div>
+        </div>
+        
+        <div class="join-section">
+            <h3>准备好加入我们的冒险了吗？</h3>
+            <p>点击下方链接加入QQ群，获取服务器地址和最新资讯</p>
+            <a href="https://qm.qq.com/cgi-bin/qm/qr?k=示例群链接" class="qq-group" target="_blank">
+                QQ群：735817542
+            </a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>我的世界纯净生存服务器 &copy; 2023 版权所有</p>
+    </div>
+</body>
+</html>
