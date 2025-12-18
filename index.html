@@ -3,247 +3,963 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的世界纯净生存基岩版服务器</title>
+    <title>「方块乌托邦」MC纯净生存服务器 - 熟人专属</title>
     <style>
+        /* 全局基础样式 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Microsoft YaHei', sans-serif;
+            font-family: "Microsoft YaHei", sans-serif;
         }
-        
+
         body {
-            background-color: #f0f8f5;
-            color: #333;
+            background-color: #f9fafb;
+            color: #1f2937;
             line-height: 1.6;
         }
-        
-        .top-banner {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        .top-banner img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        
-        .top-banner:hover img {
-            transform: scale(1.02);
-        }
-        
-        .head {
-            width: 100%;
-            padding: 2rem 1rem;
-            text-align: center;
-            background-color: #defffa;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .head::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" fill="%2362a87c" opacity="0.1"><rect width="2" height="2"/><rect x="2" y="2" width="2" height="2"/></svg>');
-            z-index: 0;
-        }
-        
-        .head h2 {
-            font-size: 2rem;
-            color: #2d6a4f;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .head h3 {
-            font-size: 1.2rem;
-            color: #62a87c;
-            position: relative;
-            z-index: 1;
-        }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 20px;
         }
-        
-        .intr {
-            width: 100%;
-            padding: 2rem;
-            margin: 2rem auto;
-            border: 2px solid #62a87c;
-            border-radius: 12px;
-            background-color: white;
-            box-shadow: 0 4px 12px rgba(98, 168, 124, 0.1);
-            transition: all 0.3s ease;
+
+        /* 导航栏 */
+        .navbar {
+            background-color: #1f2937;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
-        .intr:hover {
-            box-shadow: 0 6px 18px rgba(98, 168, 124, 0.2);
-            transform: translateY(-5px);
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
-        .intr p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        
-        .pic {
-            width: 100%;
-            margin: 2rem auto;
-            border: 2px solid #62a87c;
-            border-radius: 12px;
-            background-color: white;
-            padding: 1.5rem;
-            box-shadow: 0 4px 12px rgba(98, 168, 124, 0.1);
-        }
-        
-        .center {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: #2d6a4f;
-            font-size: 1.2rem;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
             font-weight: bold;
+            color: #52c41a;
         }
-        
+
+        .logo i {
+            font-size: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+            color: #52c41a;
+        }
+
+        /* 英雄区 */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("home.png") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 80px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #52c41a;
+            text-shadow: 0 0 15px rgba(82, 196, 26, 0.4);
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: #52c41a;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(82, 196, 26, 0.2);
+        }
+
+        .hero-btn:hover {
+            background-color: #43a017;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(82, 196, 26, 0.3);
+        }
+
+        /* 通用模块样式 */
+        .section {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #52c41a;
+            border-radius: 2px;
+        }
+
+        .section-desc {
+            color: #6b7280;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* 服务器简介 */
+        .intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .intro-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .intro-text p {
+            color: #6b7280;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .intro-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .intro-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .intro-feature:hover {
+            transform: translateX(5px);
+        }
+
+        .intro-feature i {
+            color: #52c41a;
+            font-size: 18px;
+        }
+
+        .intro-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 核心特色 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid #52c41a;
+            transition: all 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: #52c41a;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .feature-desc {
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        /* 截图画廊（无描述） */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
-        
-        .gallery img {
+
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px) scale(1.03);
+        }
+
+        .gallery-img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            display: block;
         }
-        
-        .gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+        /* 玩家评价 */
+        .reviews {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
-        
-        .join-section {
-            text-align: center;
-            margin: 3rem auto;
-            padding: 2rem;
-            background-color: #62a87c;
-            color: white;
-            border-radius: 12px;
-            max-width: 800px;
-            box-shadow: 0 4px 15px rgba(98, 168, 124, 0.3);
-        }
-        
-        .join-section h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .qq-group {
-            display: inline-block;
-            padding: 0.8rem 2rem;
+
+        .review-card {
             background-color: white;
-            color: #62a87c;
-            border-radius: 30px;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .review-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .review-quote {
+            font-size: 48px;
+            color: #52c41a;
+            opacity: 0.2;
+            position: absolute;
+            top: 15px;
+            left: 20px;
+        }
+
+        .review-text {
+            color: #6b7280;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            padding-top: 10px;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #52c41a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
+            font-size: 18px;
         }
-        
-        .qq-group:hover {
-            background-color: #f0f8f5;
-            transform: scale(1.05);
+
+        .author-info h4 {
+            font-size: 16px;
+            color: #1f2937;
         }
-        
-        .footer {
+
+        .author-info p {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        /* 加入指南 */
+        .join {
+            background: linear-gradient(135deg, #4a90e2, #52c41a);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 16px;
             text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            color: #666;
-            font-size: 0.9rem;
-            border-top: 1px solid #e0e0e0;
+            margin-bottom: 80px;
         }
-        
-        @media (max-width: 768px) {
+
+        .join-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .join-desc {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .join-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        .join-step {
+            background-color: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s;
+        }
+
+        .join-step:hover {
+            transform: translateY(-8px);
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            color: #1f2937;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+
+        .step-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .step-desc {
+            opacity: 0.8;
+            font-size: 16px;
+        }
+
+        .join-btn {
+            display: inline-block;
+            background-color: white;
+            color: #1f2937;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .join-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        /* FAQ（无bug版） */
+        .faq {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #f5f5f5;
+        }
+
+        .faq-toggle {
+            color: #52c41a;
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            color: #6b7280;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-answer p {
+            padding: 0 0 20px 0;
+            margin: 0;
+        }
+
+        /* 页脚 */
+        .footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #52c41a;
+        }
+
+        .footer-col p {
+            color: #9ca3af;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-link {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-link:hover {
+            color: #52c41a;
+            padding-left: 8px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 992px) {
+            .intro {
+                grid-template-columns: 1fr;
+            }
+            .features, .reviews {
+                grid-template-columns: repeat(2, 1fr);
+            }
             .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                grid-template-columns: repeat(3, 1fr);
             }
-            
-            .head h2 {
-                font-size: 1.5rem;
+            .join-steps {
+                grid-template-columns: 1fr;
+                max-width: 500px;
             }
-            
-            .intr, .pic {
-                padding: 1rem;
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            .features, .reviews {
+                grid-template-columns: 1fr;
+            }
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                height: 60vh;
+            }
+            .hero-title {
+                font-size: 28px;
+            }
+            .join {
+                padding: 40px 10px;
             }
         }
     </style>
+    <!-- 图标库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div class="top-banner">
-        <img src="home.png" alt="我的世界服务器横幅">
-    </div>
-    
-    <div class="head">
-        <h2>我的世界基岩版服务器</h2>
-        <h3>纯净生存 | 建筑 | 生电</h3>
-    </div>
-    
-    <div class="container">
-        <div class="intr">
-            <p>&emsp;&emsp;这是一个Minecraft原汁原味纯生存服务器，核心玩法为建筑和生电。虽然目前每天在线人数少得可怜，但我们正在尝试扩大社区规模，欢迎各位玩家加入我们的大家庭，一起探索、建造和冒险！</p>
-        </div>
-        
-        <div class="pic">
-            <p class="center">随手拍的照</p>
-            <div class="gallery">
-                <img src="./img/1.png" alt="服务器截图0">
-                <img src="./img/2.png" alt="服务器截图2">
-                <img src="./img/3.png" alt="服务器截图3">
-                <img src="./img/4.png" alt="服务器截图4">
-                <img src="./img/5.png" alt="服务器截图5">
-                <img src="./img/6.png" alt="服务器截图6">
-                <img src="./img/7.png" alt="服务器截图7">
-                <img src="./img/8.png" alt="服务器截图8">
-                <img src="./img/9.png" alt="服务器截图9">
-                <img src="./img/10.png" alt="服务器截图10">
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <div class="logo">
+                <i class="fa fa-cube"></i>
+                <span>方块乌托邦</span>
+            </div>
+            <div class="nav-links">
+                <a href="#intro" class="nav-link">服务器简介</a>
+                <a href="#features" class="nav-link">核心特色</a>
+                <a href="#gallery" class="nav-link">游戏截图</a>
+                <a href="#join" class="nav-link">加入我们</a>
+                <a href="#faq" class="nav-link">常见问题</a>
             </div>
         </div>
-        
-        <div class="join-section">
-            <h3>准备好加入我们的冒险了吗？</h3>
-            <p>点击下方链接加入QQ群，获取服务器地址和最新资讯</p>
-            <a href=" https://qun.qq.com/universal-share/share?ac=1&authKey=ph0h5zBxDu4epff9hXVLr%2BaLLWcxJWxyinkMdckkxy%2BCcJuidZ4CJhhWatxoi5sK&busi_data=eyJncm91cENvZGUiOiI3MzU4MTc1NDIiLCJ0b2tlbiI6IldTQlhDcStLSVhnL0R2WHV2bDdOL1hjb0lHTlByREVZQyt0NytCSHVpcjVvU09lV0tNVmhTS2hHWDdiREh1ZnoiLCJ1aW4iOiIxNTM0NTc0Nzg5In0%3D&data=KXzEIUCTQsSuM9vjuICyFWdO1WPFhVY36vdptmkzqQ886BczKOlaAmXmer438wLvMK0VzLJoHamT9_lKfqfK4g&svctype=4&tempid=h5_group_info" class="qq-group" target="_blank">
-                QQ群：735817542
-            </a>
+    </nav>
+
+    <!-- 英雄区 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">方块乌托邦</h1>
+            <p class="hero-subtitle">不止是生存，更是属于熟人的MC乌托邦</p>
+            <a href="#join" class="hero-btn">立即加入服务器</a>
         </div>
+    </section>
+
+    <div class="container">
+        <!-- 服务器简介 -->
+        <section class="section" id="intro">
+            <div class="section-header">
+                <h2 class="section-title">服务器简介</h2>
+                <p class="section-desc">我们坚持纯粹的MC生存体验，拒绝花里胡哨的插件，只为给熟人圈子打造一个安心、稳定、长久的游戏家园</p>
+            </div>
+            <div class="intro">
+                <div class="intro-text">
+                    <h3>为什么选择「方块乌托邦」？</h3>
+                    <p>这是一台由朋友出借的优质服务器，配置管够，运行流畅不卡顿。我们不搞快餐式运营，专注于打造一个能让玩家长期扎根的MC世界。</p>
+                    <p>我们没有繁琐的规则，没有氪金套路，没有熊孩子打扰，只有一群热爱MC的朋友，一起砍树、挖矿、建家、研究红石，找回最初玩MC的快乐。</p>
+                    <div class="intro-features">
+                        <div class="intro-feature">
+                            <i class="fa fa-check-circle"></i>
+                            <span>100%纯净无插件</span>
+                        </div>
+                        <div class="intro-feature">
+                            <i class="fa fa-check-circle"></i>
+                            <span>正版验证防熊孩子</span>
+                        </div>
+                        <div class="intro-feature">
+                            <i class="fa fa-check-circle"></i>
+                            <span>24小时稳定运行</span>
+                        </div>
+                        <div class="intro-feature">
+                            <i class="fa fa-check-circle"></i>
+                            <span>每日自动数据备份</span>
+                        </div>
+                        <div class="intro-feature">
+                            <i class="fa fa-check-circle"></i>
+                            <span>管理员同玩无特权</span>
+                        </div>
+                        <div class="intro-feature">
+                            <i class="fa fa-check-circle"></i>
+                            <span>熟人圈子氛围友好</span>
+                        </div>
+                    </div>
+                </div>
+                <img src="img/1.png" alt="服务器实拍" class="intro-img">
+            </div>
+        </section>
+
+        <!-- 核心特色 -->
+        <section class="section" id="features">
+            <div class="section-header">
+                <h2 class="section-title">核心特色</h2>
+                <p class="section-desc">我们不追求花里胡哨的功能，只把基础做到极致，让每一位玩家都能享受纯粹的MC乐趣</p>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title">极致纯净体验</h3>
+                    <p class="feature-desc">完全还原官方原版MC，无任何修改插件，无OP权限滥用，无氪金道具，让你体验最纯粹的生存玩法，从砍第一棵树开始，一步步打造属于自己的家园。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa fa-home"></i>
+                    </div>
+                    <h3 class="feature-title">自由建筑创作</h3>
+                    <p class="feature-desc">无建筑高度限制，无区域封禁，你可以在服务器的任何角落建造属于自己的城堡、别墅、红石机器甚至整个城市，管理员会保护你的建筑不被破坏。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa fa-cogs"></i>
+                    </div>
+                    <h3 class="feature-title">红石玩法开放</h3>
+                    <p class="feature-desc">支持所有原版红石机制，刷铁机、自动农场、村民交易所、地铁系统...只要你能想到的红石玩法，都可以在服务器里实现，还能和其他玩家交流技巧。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">熟人圈子氛围</h3>
+                    <p class="feature-desc">服务器仅对熟人开放，入群需简单验证，杜绝熊孩子和破坏者。群内玩家互帮互助，新手缺物资有人送，建家缺材料有人帮，真正的游戏社交。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">配置管够流畅</h3>
+                    <p class="feature-desc">服务器配置充足，运行流畅不卡顿，即使多人同时在线、运行大型红石机器也能保持流畅，游戏体验拉满。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa fa-handshake-o"></i>
+                    </div>
+                    <h3 class="feature-title">公平友好管理</h3>
+                    <p class="feature-desc">管理员和普通玩家同权同玩，不滥用权限，不搞特殊化。服务器规则简单清晰，遇到问题管理员秒回应，处理公平公正，让你玩得安心。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 截图画廊（纯图片无描述） -->
+        <section class="section" id="gallery">
+            <div class="section-header">
+                <h2 class="section-title">游戏实拍展示</h2>
+                <p class="section-desc">服务器内的真实场景，每一张都是玩家的心血与回忆</p>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="img/1.png" alt="服务器截图" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/2.png" alt="服务器截图" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/3.png" alt="服务器截图" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/4.png" alt="服务器截图" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/5.png" alt="服务器截图" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/6.png" alt="服务器截图" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/7.png" alt="服务器截图" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/8.png" alt="服务器截图" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/9.png" alt="服务器截图" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/10.png" alt="服务器截图" class="gallery-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- 玩家评价 -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">玩家真实评价</h2>
+                <p class="section-desc">听听正在玩的玩家怎么说，这是对我们最好的认可</p>
+            </div>
+            <div class="reviews">
+                <div class="review-card">
+                    <div class="review-quote">"</div>
+                    <p class="review-text">玩过很多服务器，要么全是熊孩子，要么管理员乱搞特权，这个服务器真的不一样，都是熟人，氛围特别好，建的房子放了半年都还在，管理员也和我们一起玩，太舒服了！</p>
+                    <div class="review-author">
+                        <div class="author-avatar">老K</div>
+                        <div class="author-info">
+                            <h4>核心玩家</h4>
+                            <p>游玩3年+</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-quote">"</div>
+                    <p class="review-text">666，还有暗广</p>
+                    <div class="review-author">
+                        <div class="author-avatar">鱼</div>
+                        <div class="author-info">
+                            <h4>新手玩家</h4>
+                            <p>游玩1个月</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-quote">"</div>
+                    <p class="review-text">我是红石爱好者，试过很多服务器要么禁红石要么卡得要死，这个服务器配置是真的顶，大型红石机器运行都不卡，还能和其他红石大佬交流技巧，管理员也特别支持我们搞创作。</p>
+                    <div class="review-author">
+                        <div class="author-avatar">阿泽</div>
+                        <div class="author-info">
+                            <h4>红石大神</h4>
+                            <p>游玩1年+</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 加入指南 -->
+        <section class="join" id="join">
+            <div class="container">
+                <h2 class="join-title">加入我们的方块乌托邦</h2>
+                <p class="join-desc">只需3步，就能开启你的纯净MC生存之旅，我们期待每一位热爱MC的朋友加入</p>
+                <div class="join-steps">
+                    <div class="join-step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">加入QQ群</h3>
+                        <p class="step-desc">添加QQ群：735817542，简单验证后即可获取服务器IP</p>
+                    </div>
+                    <div class="join-step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">准备正版账号</h3>
+                        <p class="step-desc">确保你有正版Minecraft账号，服务器开启正版验证防熊孩子</p>
+                    </div>
+                    <div class="join-step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">连接服务器</h3>
+                        <p class="step-desc">在MC中输入IP地址，无需白名单，直接进入开始游戏</p>
+                    </div>
+                </div>
+                <a href="https://qm.qq.com/q/7gha2alB3G" class="join-btn" target="_blank">加入QQ群：735817542</a>
+            </div>
+        </section>
+
+        <!-- 常见问题（无bug） -->
+        <section class="section" id="faq">
+            <div class="section-header">
+                <h2 class="section-title">常见问题</h2>
+                <p class="section-desc">解答你可能关心的问题，让你玩得更放心</p>
+            </div>
+            <div class="faq">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>服务器需要氪金吗？</span>
+                        <i class="fa fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>完全不需要！我们服务器拒绝任何形式的氪金，所有玩家权利平等，管理员也不会通过氪金牟利，纯粹靠热爱运营。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>新手加入会被欺负吗？</span>
+                        <i class="fa fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>绝对不会！我们服务器是熟人圈子，入群需要验证，杜绝熊孩子和恶意玩家。老玩家都会主动帮助新手，管理员也会保护每一位玩家的权益。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>服务器会突然关服吗？</span>
+                        <i class="fa fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>不会！有稳定的运行保障，并且每日自动备份数据，即使出现意外也能快速恢复，保证玩家的建筑和进度不丢失。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>支持哪些版本的MC？</span>
+                        <i class="fa fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>我们实时同步官方最新正式版，目前支持1.20.x全版本，后续会持续更新，确保玩家能体验到最新的MC内容。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-    
-    <div class="footer">
-        <p>我的世界纯净生存服务器 &copy; 2025 版权所有Uchiful</p>
-    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>方块乌托邦</h3>
+                    <p>我们不是最大的MC服务器，但我们是最有温度的熟人圈子。</p>
+                    <p>坚持纯净、稳定、公平、友好的运营理念，让每一位热爱MC的玩家都能找到归属感。</p>
+                </div>
+                <div class="footer-col">
+                    <h3>快速链接</h3>
+                    <div class="footer-links">
+                        <a href="#intro" class="footer-link">服务器简介</a>
+                        <a href="#features" class="footer-link">核心特色</a>
+                        <a href="#gallery" class="footer-link">游戏截图</a>
+                        <a href="#join" class="footer-link">加入我们</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>联系我们</h3>
+                    <div class="footer-links">
+                        <a href="https://qm.qq.com/q/7gha2alB3G" class="footer-link">QQ群：735817542</a>
+                        <a href="#" class="footer-link">管理员QQ：1534574789</a>
+                        <a href="#" class="footer-link">问题反馈：群内直接@管理员</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 方块乌托邦 MC服务器 版权所有 | 配置管够 · 长期稳定 · 熟人专属</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 核心JS（无bug） -->
+    <script>
+        // 1. 滚动触发模块显示
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight * 0.85) {
+                    section.classList.add('active');
+                }
+            });
+        });
+
+        // 2. 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 3. FAQ展开/收起（无bug）
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                // 切换当前FAQ
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('.faq-toggle');
+                
+                // 关闭其他所有FAQ
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    if (ans !== answer) {
+                        ans.style.maxHeight = '0';
+                        ans.style.padding = '0 20px';
+                        ans.parentElement.querySelector('.faq-toggle').style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                // 切换当前FAQ状态
+                if (answer.style.maxHeight === '0px' || !answer.style.maxHeight) {
+                    answer.style.maxHeight = answer.scrollHeight + 40 + 'px';
+                    answer.style.padding = '0 20px 20px';
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    answer.style.maxHeight = '0';
+                    answer.style.padding = '0 20px';
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        // 初始化触发一次滚动
+        window.dispatchEvent(new Event('scroll'));
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
